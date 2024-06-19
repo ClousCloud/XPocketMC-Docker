@@ -25,7 +25,7 @@ RUN php $(test -d vendor/pocketmine/bedrock-data && echo -n vendor/pocketmine/be
 
 RUN php -dphar.readonly=0 build/server-phar.php --git $(git rev-parse HEAD)
 # Just to make sure DevTools didn't false-positive-exit
-RUN test -f /build/PocketMine-MP.phar
+RUN test -f /build/XPocketMP.phar
 
 FROM ubuntu:18.04
 LABEL maintainer="PMMP Team <team@pmmp.io>"
