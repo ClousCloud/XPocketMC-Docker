@@ -48,7 +48,7 @@ jobs:
         test $(cat data/plugin_data/data-test/create-data) == "successful"
 
     - name: Test if it persists plugin data
-      run: echo stop | docker run --rm -i -v $PWD/data:/data -v $PWD/testsuite/${{ matrix.TESTSUITE_VERSION }}/verify-data:/plugins local-pocketmine-mp
+      run: echo stop | docker run --rm -i -v $PWD/data:/data -v $PWD/testsuite/${{ matrix.TESTSUITE_VERSION }}/verify-data:/plugins local-xpocketmp
   
     - name: Test if it downloads plugins
       run: |
