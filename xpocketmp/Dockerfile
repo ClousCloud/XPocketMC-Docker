@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 ARG PMMP_TAG
 ARG COMPILE_SH_ARGS="-f -g"
-ARG PMMP_REPO=xpocketmc/XPocketMC-Docker
+ARG PMMP_REPO=xpocketmc/XPocketMP-server
 
 RUN test ! -z ${PMMP_TAG} || (echo "Missing build-arg PMMP_TAG" && false)
 
@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y ca-certificates
 RUN groupadd -g 1000 xpocketmp
 RUN useradd -r -d /xpocketmp -p "" -u 1000 -m -g xpocketmp xpocketmp
 
-WORKDIR /pocketmine
+WORKDIR /xpocketmp
 COPY --from=0 /build/build/php/bin/php7 /usr/php
 RUN grep -q '^extension_dir' /usr/php/bin/php.ini && \
 	sed -ibak "s{^extension_dir=.*{extension_dir=\"$(find /usr/php -name *debug-zts*)\"{" /usr/php/bin/php.ini || echo "extension_dir=\"$(find /usr/php -name *debug-zts*)\"" >> /usr/php/bin/php.ini
